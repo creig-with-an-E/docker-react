@@ -1,0 +1,16 @@
+# tests will be run using the docker dev file
+# when using docker you need superuser
+sudo: required
+services:
+  - docker
+
+before_install:
+# series of steps before deploy or running tests
+# build docker image
+  - docker build -t creig/docker-react -f Dockerfile.dev .
+
+# commands needed to run
+# to run tests we override default action by passing npm run test command
+# `-- --coverage` to ensure npm tests close when finished
+script:
+  - docker run creig/docker-react npm run test -- --coverage
