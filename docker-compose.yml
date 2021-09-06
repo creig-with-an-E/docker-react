@@ -1,0 +1,11 @@
+# we will need docker-compose.yml file when using ELB
+# as new changes fail to read the Dockerfile directly
+# as deploy fails
+version: '3'
+services: 
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - '80:80'
