@@ -17,6 +17,10 @@ RUN npm run build
 # -------------- start start process
 
 FROM nginx
+# this is only in prod
+# this is how we will handle port mapping with BeanStalk
+# to map incoming traffic
+EXPOSE 80
 
 COPY --from=builder_phase /app/build /usr/share/nginx/html
 
