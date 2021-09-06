@@ -20,6 +20,7 @@ FROM nginx
 # this is only in prod
 # this is how we will handle port mapping with BeanStalk
 # to map incoming traffic
+# locally EXPOSE does nothing
 EXPOSE 80
 
 COPY --from=builder_phase /app/build /usr/share/nginx/html
