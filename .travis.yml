@@ -14,3 +14,19 @@ before_install:
 # `-- --coverage` to ensure npm tests close when finished
 script:
   - docker run -e CI=true creig/docker-react npm run test -- --coverage
+
+deploy:
+# travis is set to easily deploy to certain environments
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-test-deploy-creig"
+  env: "Dockertestdeploycreig-env"
+  bucket_name: "elasticbeanstalk-us-east-1-731204285057"
+  bucket_path: "docker-test-deploy-creig" # same as app name
+  # set branch to  be deployed
+  on:
+    branch: master
+  # environment vars in travis
+  acces_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
