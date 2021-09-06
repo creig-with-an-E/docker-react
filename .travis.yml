@@ -25,7 +25,9 @@ deploy:
   bucket_path: "docker-test-deploy-creig" # same as app name
   # set branch to  be deployed
   on:
-    branch: master
+    # new github rules using main as opposed to master
+    branch: main 
+
   # environment vars in travis
   acces_key_id: $AWS_ACCESS_KEY
   secret_access_key:
